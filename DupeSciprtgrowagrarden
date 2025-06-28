@@ -1,0 +1,58 @@
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/jensonhirst/Orion/main/source"))():Init(function(OrionLib)
+    -- Create UI Window
+    local Window = OrionLib:MakeWindow({
+        Name = "Main hack",
+        HidePremium = false,
+        SaveConfig = false,
+        ConfigFolder = "MainHackConfig",
+        IntroEnabled = true,
+        IntroText = "Main hack loading...",
+        IntroIcon = "rbxassetid://4483345998",
+        Icon = "rbxassetid://4483345998"
+    })
+
+    -- Create Main Tab
+    local MainTab = Window:MakeTab({
+        Name = "Main hack",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    -- Add Title / Paragraph for script purpose
+    MainTab:AddParagraph("Grow a Garden Dupe Script", "This script helps in duplicating pets and predicting egg success!")
+
+    -- Add Warning Description
+    MainTab:AddParagraph("⚠️ Warning", "❌ Duplication does not work on trash pets. Please use valuable pets only.")
+
+    -- Add Info Description
+    MainTab:AddParagraph("⏳ Info", "Please wait 5 minutes for the dupe process to complete after clicking.")
+
+    -- Add Dupe Pets Button
+    MainTab:AddButton({
+        Name = "Dupe Pets",
+        Callback = function()
+            print("Dupe Pets button clicked!")
+            OrionLib:MakeNotification({
+                Name = "Dupe Started",
+                Content = "Please wait 5 minutes...",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    })
+
+    -- Add Egg Predictor Slider
+    MainTab:AddSlider({
+        Name = "Egg Predictor",
+        Min = 0,
+        Max = 100,
+        Default = 50,
+        Increment = 1,
+        ValueName = "%",
+        Callback = function(Value)
+            print("Egg Predictor set to: " .. Value .. "%")
+        end
+    })
+end)
+
